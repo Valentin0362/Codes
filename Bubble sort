@@ -1,0 +1,48 @@
+using System;
+
+class SelectionSort
+{
+    public static void Sort1(int[] array)
+    {
+        int n = array.Length;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            int min_idx = i;
+
+            for (int j = i + 1; j < n; j++)
+            {
+                if (array[j] < array[min_idx])
+                {
+                    min_idx = j;
+                }
+            }
+            
+            int temp = array[min_idx];
+            array[min_idx] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    public static void PrintArray(int[] array)
+    {
+        int n = array.Length;
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(array[i] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] array = { 64, 25, 12, 22, 11 };
+        SelectionSort.Sort1(array);
+
+        Console.WriteLine("Sorted array:");
+        SelectionSort.PrintArray(array);
+    }
+}
