@@ -1,0 +1,68 @@
+using System;
+
+namespace class_Car
+{
+    public class Car
+    {
+        public string brand;
+        public string model;
+        public int engineVolume;
+        public int yearOfProducing;
+
+        public double CalculateTax()
+        {
+            double tax = 0.2 * engineVolume;
+
+            if (yearOfProducing >= 2010)
+            {
+                tax += 50.00;
+            }
+            else if (yearOfProducing >= 2001 && yearOfProducing <= 2010)
+            {
+                tax += 60.00;
+            }
+            else if (yearOfProducing <= 2000)
+            {
+                tax += 70.00;
+            }
+
+            return tax;
+        }
+
+        public void InputCarDetails()
+        {
+            Console.WriteLine("Enter a brand: ");
+            brand = Console.ReadLine();
+
+            Console.WriteLine("Enter a model: ");
+            model = Console.ReadLine();
+
+            Console.WriteLine("Enter engine volume: ");
+            engineVolume = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter tear of producing: ");
+            yearOfProducing = int.Parse(Console.ReadLine());
+        }
+
+        public void PrintCarDetails()
+        {
+            Console.WriteLine("The tax of {0}, {1}, with engine volume {2}", brand, model, engineVolume);
+            Console.WriteLine("and year of producing  {0}", yearOfProducing);
+            double tax = CalculateTax();
+            Console.WriteLine("The tax: " + tax + "lv.");
+        }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Car car1 = new Car();
+
+            car1.InputCarDetails();
+
+            car1.PrintCarDetails();
+
+        }
+    }
+}
